@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>10 prompts para que ChatGPT te haga mini apps | Jonatan Correa</title>
+<meta name="description" content="Copia, pega y convierte tus preguntas en calculadoras, gráficos y herramientas que puedes tocar. Sin programar nada.">
+<meta name="author" content="Jonatan Correa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --indigo:#3d34b8; --indigo-deep:#1e1b4b;
+  --text-primary:#191730; --text-secondary:#57536e; --text-muted:#8b87a0;
+  --page-bg:#f4f2fb;
+  --glass-bg:rgba(255,255,255,0.52);
+  --glass-bg-soft:rgba(255,255,255,0.38);
+  --glass-border:rgba(255,255,255,0.65);
+  --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--page-bg);color:var(--text-primary);
+  font-family:'Manrope',system-ui,-apple-system,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.bg-mesh{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(90px)}
+.b1{width:520px;height:520px;background:#8f86f0;opacity:.42;top:-140px;left:-120px}
+.b2{width:440px;height:440px;background:#f5b877;opacity:.34;top:34%;right:-160px}
+.b3{width:400px;height:400px;background:#8fd9b6;opacity:.3;bottom:6%;left:-120px}
+.b4{width:360px;height:360px;background:#c9a8f2;opacity:.34;bottom:-100px;right:8%}
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  border:1px solid var(--glass-border);
+  box-shadow:0 8px 40px rgba(61,52,184,0.10), inset 0 1px 0 rgba(255,255,255,0.5);
+  border-radius:26px;
+}
+.eyebrow{
+  display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--indigo);
+  background:rgba(255,255,255,0.55);border:1px solid var(--glass-border);
+  padding:7px 16px;border-radius:999px;margin-bottom:26px;
+}
+h1{font-size:clamp(38px,6.4vw,68px);line-height:1.04;font-weight:800;letter-spacing:-.03em;margin:0 0 22px}
+h2{font-size:clamp(27px,3.8vw,40px);line-height:1.12;font-weight:800;letter-spacing:-.02em;margin:0 0 14px}
+h3{font-size:21px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px}
+.serif{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;color:var(--indigo)}
+p{margin:0 0 16px;color:var(--text-secondary)}
+.lead{font-size:clamp(18px,2.2vw,21px);color:var(--text-secondary);max-width:660px}
+section{padding:44px 0}
+header.hero{padding:72px 0 40px}
+.section-head{max-width:680px;margin-bottom:26px}
+.section-head p{margin-bottom:0}
+
+/* prompts */
+.case{padding:30px 28px;margin-bottom:18px}
+.case-top{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.case-num{font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:600;font-size:34px;color:var(--indigo);opacity:.5;line-height:1;flex-shrink:0}
+.case-body{flex:1;min-width:240px}
+.prompt{margin-top:18px;background:rgba(30,27,75,.055);border:1px solid rgba(61,52,184,.13);border-radius:18px;padding:18px 20px;position:relative}
+.case-body h3 + .prompt{margin-top:14px}
+.prompt .plabel{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:9px;display:block}
+.prompt code{font-family:'Manrope',sans-serif;font-size:14.5px;line-height:1.6;color:var(--text-primary);display:block;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
+.copy{margin-top:14px;border:0;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;color:#fff;padding:9px 20px;border-radius:999px;background:linear-gradient(150deg,#3d34b8,var(--indigo-deep));box-shadow:0 4px 16px rgba(61,52,184,.28),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .18s cubic-bezier(.2,.8,.2,1)}
+.copy:active{transform:scale(.97)}
+.copy.done{background:linear-gradient(150deg,#2f7d5c,#1e5c42)}
+
+/* consejo */
+.tip{padding:30px 28px}
+.tip h2{margin-bottom:10px}
+.tip p{margin:0}
+
+/* cta */
+.cta{background:linear-gradient(150deg,#2b2470,var(--indigo-deep));border-radius:30px;padding:56px 44px;text-align:center;color:#fff;box-shadow:0 20px 60px rgba(30,27,75,.3)}
+.cta h2{color:#fff;margin-bottom:14px}
+.cta p{color:rgba(255,255,255,.78);max-width:520px;margin:0 auto}
+.cta a{color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45)}
+footer{padding:30px 0 48px;text-align:center;font-size:14px;color:var(--text-muted)}
+footer a{color:var(--indigo);text-decoration:none;font-weight:700}
+
+@media (prefers-reduced-motion: no-preference){
+  .rise{opacity:0;transform:translateY(10px);animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+@media (max-width:700px){
+  .wrap{padding:0 18px}
+  section{padding:34px 0}
+  header.hero{padding:48px 0 28px}
+  .cta{padding:40px 24px}
+  .case{padding:24px 20px}
+  .case-num{font-size:27px}
+  .tip{padding:24px 20px}
+}
+@media (max-width:420px){
+  /* teléfono: el número va arriba y el prompt usa todo el ancho de la tarjeta */
+  .case-top{gap:10px}
+  .case-body{flex-basis:100%;min-width:0}
+  .prompt{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-mesh">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="blob b3"></div><div class="blob b4"></div>
+</div>
+
+<header class="hero">
+  <div class="wrap rise">
+    <span class="eyebrow">Guía · Nivel principiante</span>
+    <h1>10 prompts para que ChatGPT te haga <span class="serif">mini apps</span></h1>
+    <p class="lead">ChatGPT ya no responde solo con texto. Desde el 7 de octubre de 2026 puede responderte con herramientas que puedes tocar: calculadoras, gráficos y controles. También está disponible en el plan gratis.</p>
+    <p class="lead">Copia el prompt que necesites, pégalo en un chat nuevo y cambia los números por los tuyos.</p>
+  </div>
+</header>
+
+<section id="dia-a-dia">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Para el día a día</h2>
+    </div>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">01</span>
+        <div class="case-body">
+          <h3>Dividir una cuenta</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Somos 5 amigos y la cuenta fue de 180 dólares. Ayúdame a dividirla con una calculadora que yo pueda ajustar: número de personas y porcentaje de propina.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="creadores">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Para creadores y marcas personales</h2>
+    </div>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">02</span>
+        <div class="case-body">
+          <h3>Cuánto cobrar por un video patrocinado</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Tengo 20 mil seguidores en Instagram y mis videos promedian 8 mil vistas. Ayúdame a calcular cuánto cobrar por un video patrocinado, con controles para cambiar seguidores y vistas y ver cómo cambia el precio.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">03</span>
+        <div class="case-body">
+          <h3>Tu tarifa por hora</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Quiero ganar 2.000 dólares al mes trabajando 20 horas a la semana con mis asesorías. Hazme una calculadora de tarifa por hora, con controles para cambiar el ingreso que quiero y las horas que trabajo.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">04</span>
+        <div class="case-body">
+          <h3>Cuándo llegas a tu meta de seguidores</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Tengo 20 mil seguidores y crezco 3% al mes. Muéstrame con un gráfico cuándo llego a 100 mil, con un control para cambiar el porcentaje de crecimiento.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">05</span>
+        <div class="case-body">
+          <h3>Cuánto puede generar tu lanzamiento</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Voy a lanzar un curso de 97 dólares a una audiencia de 20 mil personas. Hazme una calculadora de ingresos con controles para cambiar el precio, el tamaño de la audiencia y el porcentaje de personas que compran.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">06</span>
+        <div class="case-body">
+          <h3>Tu calendario de contenido de la semana</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Publico 5 veces por semana sobre marca personal. Arma mi calendario de contenido de esta semana de forma interactiva, con una idea por día y casillas para marcar lo que ya publiqué.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="negocio">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Para dueños de negocio</h2>
+    </div>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">07</span>
+        <div class="case-body">
+          <h3>Cuánto vender para llegar a tu meta</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Vendo un producto a 25 dólares y cada unidad me cuesta 14. ¿Cuántas debo vender al mes para ganar 1.000 dólares? Muéstralo con un gráfico y controles para cambiar el precio y el costo.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">08</span>
+        <div class="case-body">
+          <h3>A qué precio vender</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Mi producto me cuesta 14 dólares y la plataforma de pago me cobra 5% por venta. Hazme una calculadora de precio de venta con un control para elegir el porcentaje de ganancia que quiero.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">09</span>
+        <div class="case-body">
+          <h3>Si vale la pena hacer un descuento</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Vendo un producto a 25 dólares que me cuesta 14 y vendo 80 unidades al mes. Quiero hacer una promoción. Muéstrame cuántas unidades más debo vender para ganar lo mismo, con un control para cambiar el porcentaje de descuento.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="glass case">
+      <div class="case-top">
+        <span class="case-num">10</span>
+        <div class="case-body">
+          <h3>Cuánto te deja tu publicidad</h3>
+          <div class="prompt">
+            <span class="plabel">Prompt listo para copiar</span>
+            <code>Invierto 200 dólares al mes en anuncios. Hazme una calculadora que muestre cuántas ventas y cuánta ganancia obtengo, con controles para cambiar la inversión, el costo por visita, el porcentaje de visitas que compran y el precio de mi producto.</code>
+            <button class="copy" type="button">Copiar prompt</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="solo-texto">
+  <div class="wrap">
+    <article class="glass case">
+      <h2>¿Te respondió solo con texto?</h2>
+      <p>Envía este mensaje justo después:</p>
+      <div class="prompt">
+        <span class="plabel">Prompt listo para copiar</span>
+        <code>Muéstralo de forma interactiva, con controles que yo pueda mover.</code>
+        <button class="copy" type="button">Copiar prompt</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="consejo">
+  <div class="wrap">
+    <div class="glass tip">
+      <h2>Un consejo</h2>
+      <p>Abre un chat nuevo para cada prompt. Así cada mini app sale limpia y no se mezcla con la anterior.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2>Ahora te toca 🛸</h2>
+      <p>Prueba uno, adáptalo a tu caso y comparte en <a href="https://club.jonatancorrea.com/espacios" target="_blank" rel="noopener">los espacios de El Club</a> qué mini app te salió.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Guía preparada por <a href="https://jonatancorrea.com" target="_blank" rel="noopener">Jonatan Correa</a> · IA Simplificada · Publicada el 11 de octubre de 2026
+  </div>
+</footer>
+
+<script>
+function copiarTexto(texto){
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(texto);
+  return new Promise(function(ok, falla){
+    var ta = document.createElement('textarea');
+    ta.value = texto; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, texto.length);
+    try { document.execCommand('copy') ? ok() : falla(); } catch (e) { falla(e); }
+    document.body.removeChild(ta);
+  });
+}
+document.querySelectorAll('.copy').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var code = btn.parentElement.querySelector('code').innerText;
+    copiarTexto(code).then(function(){
+      var original = btn.textContent;
+      btn.textContent = '¡Copiado!';
+      btn.classList.add('done');
+      setTimeout(function(){ btn.textContent = original; btn.classList.remove('done'); }, 1800);
+    });
+  });
+});
+</script>
+</body>
+</html>
