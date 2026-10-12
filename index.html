@@ -82,6 +82,9 @@ header.hero{padding:72px 0 40px}
 .cta h2{color:#fff;margin-bottom:14px}
 .cta p{color:rgba(255,255,255,.78);max-width:520px;margin:0 auto}
 .cta a{color:#fff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45)}
+@media (min-width:701px){
+  .cta .cta-tag{max-width:none;white-space:nowrap;font-size:min(17px,calc((100vw - 140px) / 43))}
+}
 footer{padding:30px 0 48px;text-align:center;font-size:14px;color:var(--text-muted)}
 footer a{color:var(--indigo);text-decoration:none;font-weight:700}
 
@@ -94,6 +97,8 @@ footer a{color:var(--indigo);text-decoration:none;font-weight:700}
   section{padding:34px 0}
   header.hero{padding:48px 0 28px}
   .cta{padding:40px 24px}
+  .cta .cta-tag{font-size:min(17px,calc((100vw - 100px) / 18.5));line-height:1.45}
+  .cta .cta-tag span{display:block;white-space:nowrap}
   .case{padding:24px 20px}
   .case-num{font-size:27px}
   .tip{padding:24px 20px}
@@ -313,7 +318,7 @@ footer a{color:var(--indigo);text-decoration:none;font-weight:700}
   <div class="wrap">
     <div class="cta">
       <h2>Ahora te toca 🛸</h2>
-      <p>Prueba uno, adáptalo a tu caso y comparte en <a href="https://club.jonatancorrea.com/espacios" target="_blank" rel="noopener">los espacios de El Club</a> qué mini app te salió.</p>
+      <p class="cta-tag"><span>Prueba uno, adáptalo a tu caso</span> <span>y comparte en <a href="https://club.jonatancorrea.com/espacios" target="_blank" rel="noopener">los espacios de El Club</a></span> <span>qué mini app te salió.</span></p>
     </div>
   </div>
 </section>
